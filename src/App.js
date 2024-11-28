@@ -11,6 +11,7 @@ function App() {
             .then(res => {
                 const response = res.data
                 console.log(response)
+                alert(res.data)
             })
             .catch(err => {
                 console.log(err)

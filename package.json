@@ -1,5 +1,6 @@
 {
   "name": "project",
+  "homepage": "https://rossparsons1.github.io/trolling",
   "version": "0.1.0",
   "private": true,
   "dependencies": {
@@ -9,6 +10,7 @@
     "axios": "^1.7.8",
     "cors": "^2.8.5",
     "express": "^4.21.1",
+    "gh-pages": "^6.2.0",
     "react": "^18.3.1",
     "react-dom": "^18.3.1",
     "react-scripts": "5.0.1",
@@ -16,10 +18,11 @@
   },
   "scripts": {
     "start": "react-scripts start",
-    "server": "npm start ./server/server.js",
+    "server": "node server/server.js",
     "build": "react-scripts build",
     "test": "react-scripts test",
-    "eject": "react-scripts eject"
+    "eject": "react-scripts eject",
+    "deploy": "gh-pages -d build"
   },
   "eslintConfig": {
     "extends": [
