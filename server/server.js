@@ -9,8 +9,16 @@ app.use(express.json());
 
 
 app.post('/', async (req,res) => {
-    console.log(req.body)
-    res.send("12345")
+    const text = req.body.data;
+    console.log(text)
+    try {
+        const response = await axios.post('https://accessories-speak-max-cop.trycloudflare.com/predict/', {
+            text: text,
+        });
+        res.json(response.data);
+    } catch (error) {
+        res.status(500).send('Error calling FastAPI');
+    }
 })
 
 app.listen(8080, () => {
