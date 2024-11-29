@@ -10,9 +10,9 @@ app.use(express.json());
 
 app.post('/', async (req,res) => {
     const text = req.body.data;
-    console.log(text)
+    // console.log(text)
     try {
-        const response = await axios.post('https://accessories-speak-max-cop.trycloudflare.com/predict/', {
+        const response = await axios.post('https://bi-discussion-gp-el.trycloudflare.com/predict/', {
             text: text,
         });
         res.json(response.data);
