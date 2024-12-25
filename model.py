@@ -71,6 +71,10 @@ def predict_toxicity(comment):
     return 'Токсичный' if prediction[0] == 1 else 'Нетоксичный'
 
 # Пример
-new_comment = "Это просто ужасно! Кто вообще мог выпустить такой брак? Видимо, делали с закрытыми глазами. Никому не рекомендую связываться с этим дерьмом!"
-result = predict_toxicity(new_comment)
-print(f'Комментарий: "{new_comment}" - {result}')
+# new_comment = "Это просто ужасно! Кто вообще мог выпустить такой брак? Видимо, делали с закрытыми глазами. Никому не рекомендую связываться с этим дерьмом!"
+# result = predict_toxicity(new_comment)
+# print(f'Комментарий: "{new_comment}" - {result}')
+
+if __name__ == "__main__":
+    import uvicorn
+    uvicorn.run(app, host="0.0.0.0", port=8000)
