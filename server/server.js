@@ -12,7 +12,7 @@ app.post('/', async (req,res) => {
     const text = req.body.data;
     // console.log(text)
     try {
-        const response = await axios.post('https://bi-discussion-gp-el.trycloudflare.com/predict/', {
+        const response = await axios.post('https://trollingbot.onrender.com/predict/', {
             text: text,
         });
         res.json(response.data);
