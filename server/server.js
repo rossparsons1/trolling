@@ -2,9 +2,13 @@ const express = require('express')
 const app = express()
 const cors = require('cors')
 
-app.use(cors({
-    origin: 'https://rossparsons1.github.io'
-}))
+const corsOptions = {
+    origin: 'https://rossparsons1.github.io', // Разрешите ваш фронтенд
+    methods: ['GET', 'POST', 'OPTIONS'], // Разрешите необходимые методы
+    allowedHeaders: ['Content-Type', 'Authorization'], // Разрешенные заголовки
+};
+
+app.use(cors(corsOptions));
 app.use(express.json());
 
 
