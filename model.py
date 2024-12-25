@@ -12,6 +12,7 @@ app = FastAPI()
 
 origins = [
     "https://trolling.onrender.com",
+    "https://rossparsons1.github.io"
 ]
 
 app.add_middleware(
