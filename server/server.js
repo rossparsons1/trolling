@@ -14,14 +14,14 @@ app.use(express.json());
 
 app.post('/', async (req,res) => {
     const text = req.body.data;
-    // console.log(text)
+    console.log(text)
     try {
         const response = await axios.post('https://trollingbot.onrender.com/predict/', {
             text: text,
         });
         res.json(response.data);
     } catch (error) {
-        res.status(500).send('Error calling FastAPI');
+        res.status(500).send(error);
     }
 })
 
