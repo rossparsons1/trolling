@@ -34,6 +34,7 @@ def read_root():
 @app.post("/predict/")
 def predict(text:PredictRequest):
     toxic_prob = predict_toxicity(text.text)
+    print(text.text)
     return {"prediction": toxic_prob}
 
 data_list = []
