@@ -1,6 +1,7 @@
 const express = require('express')
 const app = express()
 const cors = require('cors')
+const axios = require("axios");
 
 const corsOptions = {
     origin: 'https://rossparsons1.github.io', // Разрешите ваш фронтенд
@@ -19,10 +20,8 @@ app.post('/', async (req,res) => {
         const response = await axios.post('https://trollingbot.onrender.com/predict/', {
             text: text,
         });
-        console.log(response.data);
         res.json(response.data);
     } catch (error) {
-        console.log(error)
         res.status(500).send(error);
     }
 })
