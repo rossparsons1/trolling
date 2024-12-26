@@ -19,8 +19,10 @@ app.post('/', async (req,res) => {
         const response = await axios.post('https://trollingbot.onrender.com/predict/', {
             text: text,
         });
+        console.log(response.data);
         res.json(response.data);
     } catch (error) {
+        console.log(error)
         res.status(500).send(error);
     }
 })
