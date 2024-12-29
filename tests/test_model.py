@@ -16,8 +16,19 @@ client = TestClient(app)
 # 2. Интеграционный
 
 # 3. Регрессионный
+def test_regression():
+    test_cases = {
+        "Это ужасно!": "Токсичный",
+        "Все хорошо.": "Нетоксичный"
+    }
+    for comment, expected in test_cases.items():
+        assert predict_toxicity(comment) == expected
 
 # 4. Приемочные
+def test_predict_toxicity():
+    comment = "Это ужасно!"
+    result = predict_toxicity(comment)
+    assert result in ['Токсичный', 'Нетоксичный']
 
 # 5. Нагрузочный
 
