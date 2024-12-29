@@ -41,5 +41,24 @@ def test_predict_toxicity():
     assert result in ['Токсичный', 'Нетоксичный']
 
 # 5. Нагрузочный
+def test_load():
+    def send_request():
+        response = client.post("/predict/", json={"text": "Это ужасно!"})
+        assert response.status_code == 200
+
+    threads = []
+    for _ in range(100):
+        thread = threading.Thread(target=send_request)
+        threads.append(thread)
+        thread.start()
+
+    for thread in threads:
+        thread.join()
 
 # 6. Параметризованный
+@pytest.mark.parametrize("input_text,expected", [
+    ("Это ужасно!", "Токсичный"),
+    ("Все хорошо.", "Нетоксичный"),
+])
+def test_predict_toxicity_param(input_text, expected):
+    assert predict_toxicity(input_text) == expected
