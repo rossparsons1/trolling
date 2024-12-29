@@ -11,9 +11,19 @@ from model import app, predict_toxicity
 
 client = TestClient(app)
 
-# 1. Модульный
-
-# 2. Интеграционный
+# 1. Модульный 
+def test_vectorizer(): 
+    vectorizer = CountVectorizer() 
+    data = ["This is a test", "Another test"] 
+    vectorized = vectorizer.fit_transform(data) 
+    assert vectorized.shape == (2, 4) 
+ 
+# 2. Интеграционный 
+def test_api_predict(): 
+    response = client.post("/predict/", json={"text": "Это ужасно!"}) 
+    assert response.status_code == 200 
+    assert "prediction" in response.json() 
+    assert response.json()["prediction"] in ['Токсичный', 'Нетоксичный']
 
 # 3. Регрессионный
 def test_regression():
